@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBA 2nd Year 3rd Sem - Attendance Dashboard Documentation</title>
+<style>
+  :root {
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --border: #E2E8F0;
+    --primary: #2563EB;
+    --primary-bg: #EFF6FF;
+    --success: #16A34A;
+    --success-bg: #DCFCE7;
+    --warning: #D97706;
+    --warning-bg: #FEF3C7;
+    --danger: #DC2626;
+    --danger-bg: #FEE2E2;
+    --purple: #9333EA;
+    --purple-bg: #F3E8FF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 30px 20px;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .header-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-right: 8px;
+    margin-bottom: 10px;
+  }
+  .badge-blue { background: var(--primary-bg); color: var(--primary); border: 1px solid #BFDBFE; }
+  .badge-green { background: var(--success-bg); color: var(--success); border: 1px solid #BBF7D0; }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid #E9D5FF; }
+  
+  h1 { font-size: 1.85rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+  h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 12px 0; border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 16px 0 8px 0; }
+  p, li { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 8px; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  }
+  
+  .code-block {
+    background: #0F172A;
+    color: #F8FAFC;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin: 10px 0 16px 0;
+  }
+  code {
+    background: #F1F5F9;
+    color: #0F172A;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-family: Consolas, monospace;
+    font-size: 0.88rem;
+    border: 1px solid #E2E8F0;
+  }
+  
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0; }
+  
+  .stat-box {
+    background: #F8FAFC;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .stat-title { font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; }
+  .stat-val { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+  
+  .formula-box {
+    background: #F8FAFC;
+    border-left: 4px solid var(--primary);
+    padding: 14px 16px;
+    margin: 12px 0;
+    border-radius: 0 10px 10px 0;
+    font-family: Consolas, monospace;
+    font-size: 0.92rem;
+    color: #1E293B;
+  }
+  
+  .btn-run {
+    display: inline-block;
+    background: var(--primary);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: #F8FAFC; font-weight: 700; color: var(--text-primary); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header-card">
+    <span class="badge badge-blue">Offline Documentation</span>
+    <span class="badge badge-green">AI Agent Specification</span>
+    <span class="badge badge-purple">Batch 2024-2026</span>
+    <h1>🎓 MBA 2nd Year 3rd Sem — Attendance Portal</h1>
+    <p>Complete offline documentation and technical guide for developers, AI coding agents, and academic evaluators.</p>
+  </div>
+
+  <!-- Quick Execution -->
+  <div class="card">
+    <h2>⚡ How to Run Offline (Instant 2-Step Launch)</h2>
+    <p>You can run this project completely offline without an active internet connection:</p>
+    <ol>
+      <li>Open your command prompt or terminal inside this folder:
+        <div class="code-block">cd "C:\Users\Riya\OneDrive\Desktop\New folder\srm attandence"</div>
+      </li>
+      <li>Start the Streamlit dashboard:
+        <div class="code-block">streamlit run app.py</div>
+      </li>
+      <li>The application launches locally at: <code>http://localhost:8501</code></li>
+    </ol>
+  </div>
+
+  <!-- Agent Technical Spec -->
+  <div class="card">
+    <h2>🤖 AI Agent System Specification</h2>
+    <p>This section is structured for external AI assistants (ChatGPT, Claude, Cursor, Devin, Antigravity) analyzing or modifying this codebase:</p>
+
+    <h3>1. Application Architecture</h3>
+    <ul>
+      <li><b>Entry File:</b> <code>app.py</code> (Streamlit Multi-View Framework)</li>
+      <li><b>Data Source:</b> <code>attendance.csv</code> (174 records, 29 unique students, 12 courses)</li>
+      <li><b>Original PDF:</b> <code>ATTENDANCE 290926.pdf</code></li>
+      <li><b>Visualization Engine:</b> Plotly Graph Objects (<code>go.Figure</code>) & Plotly Express</li>
+      <li><b>State Management:</b> Streamlit Session State & cached data loaders (<code>@st.cache_data</code>)</li>
+    </ul>
+
+    <h3>2. Dataset Schema (attendance.csv)</h3>
+    <table>
+      <thead>
+        <tr><th>Column</th><th>Type</th><th>Description</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>S.No</code></td><td>Integer</td><td>Sequential record identifier</td><td>1</td></tr>
+        <tr><td><code>Register_No</code></td><td>String</td><td>Student SRM Registration Number</td><td>RA2452001010001</td></tr>
+        <tr><td><code>Student_Name</code></td><td>String</td><td>Full student name</td><td>Kavin R</td></tr>
+        <tr><td><code>Course_Code</code></td><td>String</td><td>Subject identification code</td><td>MBG24301T</td></tr>
+        <tr><td><code>Course_Title</code></td><td>String</td><td>Subject title / description</td><td>Strategic Management</td></tr>
+        <tr><td><code>Attendance_Percentage</code></td><td>Float</td><td>Recorded student attendance %</td><td>87.5</td></tr>
+        <tr><td><code>Status</code></td><td>String</td><td>Eligibility: 'Eligible' vs 'Shortage'</td><td>Eligible</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3. Course Conducted Class Mapping</h3>
+    <p>Official total conducted classes per subject as extracted from the institutional schedule:</p>
+    <div class="code-block">COURSE_CONDUCTED = {
+    'MBG24301T': 16,  # Strategic Management
+    'MBG24302T': 16,  # International Business Management
+    'MBG24303L': 24,  # Business Analytics Lab (Extended Lab Sessions)
+    'MBG24B05L': 17,  # Elective 1
+    'MBG24B06L': 17,  # Elective 2
+    'MBG24B11L': 17,  # Elective 3
+    'MBG24F05T': 17,  # Financial Management Elective
+    'MBG24F09T': 17,  # Security Analysis & Portfolio
+    'MBG24H06T': 17,  # HR Elective 1
+    'MBG24H09T': 17,  # HR Elective 2
+    'MBG24M07T': 17,  # Marketing Elective 1
+    'MBG24M11T': 17   # Marketing Elective 2
+}</div>
+  </div>
+
+  <!-- Mathematical Formulations -->
+  <div class="card">
+    <h2>📐 Mathematical Formulations for Consecutive Class Recovery</h2>
+    <p>Given total conducted classes <code>T</code>, attended classes <code>A</code>, and benchmark threshold <code>P_target = 0.75</code> (75%):</p>
+    
+    <h3>Case 1: Student is in Shortage (&lt; 75%)</h3>
+    <p>Upcoming consecutive classes <code>x</code> required to reach or exceed 75%:</p>
+    <div class="formula-box">x = ceil( (0.75 * T - A) / 0.25 ) = ceil( 3*T - 4*A )</div>
+    <p><i>Example: If T=16, A=10 (Attendance = 62.5%): x = ceil(3*16 - 4*10) = 48 - 40 = 8 upcoming consecutive classes required.</i></p>
+
+    <h3>Case 2: Student is Eligible (&ge; 75%)</h3>
+    <p>Safe miss buffer (classes student can miss without dropping below 75%):</p>
+    <div class="formula-box">m = floor( (A / 0.75) - T ) = floor( (4*A - 3*T) / 3 )</div>
+  </div>
+
+  <!-- Core Views -->
+  <div class="card">
+    <h2>🖥️ Dashboard Views Included</h2>
+    <div class="grid-2">
+      <div class="stat-box">
+        <div class="stat-title">View 1: Dashboard</div>
+        <p style="margin-top:6px; font-size:0.88rem;">Executive layout with Donut Chart, 6 Micro-KPI Cards, Diverging On-Time bar chart, and Conducted Class Hours distribution.</p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-title">View 2: Attendance Calculator</div>
+        <p style="margin-top:6px; font-size:0.88rem;">Interactive recovery tool projecting future percentage trajectories per attended class.</p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-title">View 3: Master Reports</div>
+        <p style="margin-top:6px; font-size:0.88rem;">Filterable dataset by student and course with 1-click CSV download.</p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-title">View 4: Defaulters & Leaves</div>
+        <p style="margin-top:6px; font-size:0.88rem;">Specific audit registry of all students falling below the 75% examination threshold.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offline Troubleshooting -->
+  <div class="card">
+    <h2>🛠️ Offline Troubleshooting for Other Machines / Agents</h2>
+    <ul>
+      <li><b>Port 8501 already in use?</b> Run on an alternate port:
+        <div class="code-block">streamlit run app.py --server.port=8502</div>
+      </li>
+      <li><b>Headless server mode:</b> If running in Docker or automated CI/CD:
+        <div class="code-block">streamlit run app.py --server.headless=true --server.port=8501</div>
+      </li>
+      <li><b>Windows Defender asyncio constraint:</b> In restricted environments, set <code>WindowsSelectorEventLoopPolicy</code> before starting asyncio tasks.</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>
